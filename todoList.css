@@ -2,23 +2,72 @@ body {
     font-family: Arial, Helvetica, sans-serif;
    
 }
+.main-container {
+    margin: auto;
+    width: 800px;
+    padding: 10px;
+
+
+}
+
+p {
+    margin: auto;
+    width: 145px;
+    margin-bottom: 20px;
+}
 
 .todo-input {
     width: 200px;
+    height: 23px;
 }
 
 .dueDate-input {
     width: 150px;
+    height: 25px;
+}
+
+.dueTime-input {
+    width: 150px;
+    height: 25px;
 }
 
 .add-todo-button {
     width: 200px;
+    height: 28px;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.add-todo-button:hover {
+    opacity: 0.7;
+}
+
+.add-todo-button:active {
+    opacity: 0.5;
 }
 
 .todo-list-container {
     display: grid;
-    grid-template-columns: 200px 150px 200px;
+    grid-template-columns: 200px 150px 150px 200px;
     margin-top: 30px;
     gap: 11px;
+    align-items: center
+}
 
+.delete-button {
+    background-color: red;
+    color: white;
+    border: transparent;
+    height: 25px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    opacity: 0.6;
+}
+
+.delete-button:active {
+    opacity: 0.3;
 }

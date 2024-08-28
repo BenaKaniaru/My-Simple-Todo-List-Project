@@ -1,4 +1,9 @@
-let myTodoList = JSON.parse(localStorage.getItem('todoList')) || [];
+let myTodoList = JSON.parse(localStorage.getItem('todoList')) || [{
+    name: 'finish my code',
+    dueDate: '2024-08-28',
+    dueTime: '18:00'
+
+}];
 
 
 renderTodoList();
@@ -10,7 +15,11 @@ function renderTodoList(){
         const todoObject = myTodoList [i];
 
         //below code destructures the object
-        const { name, dueDate } = todoObject;
+        const name = todoObject.name;
+        const dueDate = todoObject.dueDate;
+        const dueTime = todoObject.dueTime;
+
+        //const { name, dueDate, dueTime } = todoObject;
         
         const html = `
             <div> 
@@ -19,7 +28,11 @@ function renderTodoList(){
             <div>
                 ${dueDate}
             </div>
-            <button onclick="
+
+            <div>
+                ${dueTime}
+            </div>
+            <button class="delete-button" onclick="
                 myTodoList.splice(${i}, 1);
                 renderTodoList()"
             >Delete</button>
@@ -40,18 +53,24 @@ function addToDo(){
     let inputDate = document.querySelector('.js-todo-date');
     const dueDate = inputDate.value;
 
-    if (name && dueDate){
+    let inputTime = document.querySelector('.js-todo-time');
+    const dueTime = inputTime.value;
+
+
+    if (name && dueDate && dueTime){
         myTodoList.push({
             name: name,
-            dueDate: dueDate
+            dueDate: dueDate,
+            dueTime: dueTime
             }
         );
 
         inputName.value = '';
         inputDate.value = '';
+        inputTime.value = '';
 
         renderTodoList();
     } else {
-        alert('Enter both a name and a due date for your activity')
+        alert('Enter a name, a due date and due time for your activity')
     }
 };
