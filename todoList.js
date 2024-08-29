@@ -26,17 +26,25 @@ function renderTodoList(){
             <div>
                 ${dueDate}
             </div>
-
-            <div>
+            <div> 
                 ${dueTime}
             </div>
-            <button class="delete-button" onclick="
-                myTodoList.splice(${index}, 1);
-                renderTodoList()"
-            >Delete</button>
-          `;
+            <button class="delete-button js-delete-button">
+                Delete
+            </button>
+        `;
+
         myTodoListHTML += html;
 
+
+        document.querySelectorAll('.js-delete-button')
+            .forEach((deleteButton, index) => {
+                deleteButton.addEventListener(('click'), ()=>{
+                    myTodoList.splice(index, 1);
+                    renderTodoList()
+                });
+            }
+        );
     });
 
     localStorage.setItem('todoList', JSON.stringify(myTodoList));
